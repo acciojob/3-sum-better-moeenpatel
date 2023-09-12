@@ -1,7 +1,10 @@
+
 function threeSum(arr, target) {
 // write your code here
-  let n=arr.length;
+	let n=arr.length;
+    arr.sort((a,b) =>a-b);
 	let closestSum=1000000000;
+
 	for(let i=0;i<n-2;i++){
 		let j=i+1;
 		let k=n-1;
