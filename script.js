@@ -1,25 +1,36 @@
-
 function threeSum(arr, target) {
 // write your code here
-	let n=arr.length;
-    arr.sort((a,b) =>a-b);
-	let closestSum=1000000000;
-
-	for(let i=0;i<n-2;i++){
-		let j=i+1;
-		let k=n-1;
-		while(j<k){
-			let sum=arr[i]+arr[j]+arr[k];
-			if(Math.abs(target-closestsum)>(target-sum)){
-				 closestsum=sum;
-			}
-			if(sum>target){
-				k--;
-			}
-			else j++;
-		}
-	}
-	return closestsum;
+	
+	arr.sort((a, b) => a - b);
+  
+  // Initialize variables
+  let closestSum = arr[0] + arr[1] + arr[2];
+  
+  // Iterate through the array
+  for (let i = 0; i < arr.length - 2; i++) {
+    let left = i + 1;
+    let right = arr.length - 1;
+    
+    while (left < right) {
+      const sum = arr[i] + arr[left] + arr[right];
+      
+      // Check if the current sum is closer to the target
+      if (Math.abs(sum - target) < Math.abs(closestSum - target)) {
+        closestSum = sum;
+      }
+      
+      if (sum < target) {
+        left++;
+      } else if (sum > target) {
+        right--;
+      } else {
+        // Found an exact match, so return the sum
+        return sum;
+      }
+    }
+  }
+  
+  return closestSum;
 }
 
 module.exports = threeSum;
